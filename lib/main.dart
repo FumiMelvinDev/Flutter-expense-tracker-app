@@ -4,15 +4,20 @@ import 'package:expense_tracker_app/screens/home.dart';
 import 'package:expense_tracker_app/screens/profile.dart';
 import 'package:expense_tracker_app/screens/transaction.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/adapters.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Hive.initFlutter();
+  await Hive.openBox('expensetracker_box');
+
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -38,19 +43,28 @@ class _BottomState extends State<Bottom> {
     const ProfileScreen(),
   ];
 
+  bool rotated = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
       body: screens[index_color],
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          setState(() {
+            rotated = !rotated;
+          });
+        },
         shape: const CircleBorder(eccentricity: 1),
         backgroundColor: AppColors.violet100,
-        child: const Icon(
-          Icons.add,
-          size: 45,
-          color: AppColors.light100,
+        child: Transform.rotate(
+          angle: rotated ? 45 * 3.1415926535 / 180 : 0,
+          child: const Icon(
+            Icons.add,
+            size: 45,
+            color: AppColors.light100,
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

@@ -7,7 +7,7 @@ class Homescreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      extendBodyBehindAppBar: false,
       body: SafeArea(
         child: CustomScrollView(
           slivers: [
@@ -192,7 +192,7 @@ class Homescreen extends StatelessWidget {
                     ),
                   );
                 },
-                childCount: 5,
+                childCount: 4,
               ),
             ),
           ],
@@ -313,12 +313,8 @@ Widget _head() {
                                   Radius.circular(10),
                                 ),
                               ),
-                              child: const Center(
-                                child: Icon(
-                                  Icons.add,
-                                  color: AppColors.green100,
-                                ),
-                              ),
+                              child: Center(
+                                  child: Image.asset('assets/income.png')),
                             ),
                             const Center(
                               child: Column(
@@ -370,12 +366,8 @@ Widget _head() {
                                   Radius.circular(10),
                                 ),
                               ),
-                              child: const Center(
-                                child: Icon(
-                                  Icons.add,
-                                  color: AppColors.green100,
-                                ),
-                              ),
+                              child: Center(
+                                  child: Image.asset('assets/expense.png')),
                             ),
                             const Center(
                               child: Column(
