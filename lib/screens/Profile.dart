@@ -11,8 +11,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Text(
-        'Profile',
+      body: SafeArea(
+        child: Text(
+          'Profile screen',
+        ),
       ),
     );
   }
