@@ -259,7 +259,7 @@ class _HomeScreenComponentsState extends State<HomeScreenComponents> {
                     animation: true,
                     animationDuration: 1000,
                     lineHeight: 30,
-                    percent: percent ?? 0, // Ensure that percent is not null
+                    percent: percent,
                     progressColor: AppColors.violet100,
                     backgroundColor: AppColors.violet40,
                     barRadius: const Radius.circular(15),
